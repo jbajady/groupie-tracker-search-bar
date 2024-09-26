@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>groupie-tracker</title>
+</head>
+<body>
+  <div style="text-align: center;margin: 5px;">
+    <h1>GROUPIE-TRACKER</h1>
+    <form action="/Search" method="post">
+      <input type="text" name="text">
+     <button type="submit">submit</button>
+    </form>
+  </div>
+  <div style="width: 97%;height: 100%;  text-align: center; margin: 10px;">
+    {{range .}}
+    <div style=" display: inline-flex; width: 250px; height: 300px;">
+     
+      <form action="/Artist" method="get">
+        <div name="name1"  style="display: block; text-align: center; margin: 5px;">
+          <img src="{{.Image}}" alt="oo"><br>
+      <button type="submit" name="id" value="{{.ID}}">{{.Name}}</button>
+        </div>
+      </form>
+    </div>
+    {{end}}
+  </div>
+</body>
+</html>
+
