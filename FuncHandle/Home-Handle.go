@@ -23,14 +23,15 @@ func HomeHandle(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	errr := Func.FetchData("https://groupietrackers.herokuapp.com/api", &Func.API)
-	if Func.GenriateData() {
-		ErrorHandle(w, http.StatusInternalServerError)
-		return
-	}
 	if errr != nil {
 		ErrorHandle(w, http.StatusInternalServerError)
 		return
 	}
+	if Func.GenriateData() {
+		ErrorHandle(w, http.StatusInternalServerError)
+		return
+	}
+	
 	var buf bytes.Buffer
 	err = temple.Execute(&buf, Func.Artists)
 	if err != nil {

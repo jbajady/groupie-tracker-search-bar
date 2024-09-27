@@ -11,6 +11,7 @@ func FetchData(url string, c interface{}) error {
 	if err != nil {
 		return err
 	}
+	defer  data.Body.Close()
 	dat, err := io.ReadAll(data.Body)
 	if err != nil {
 		return err

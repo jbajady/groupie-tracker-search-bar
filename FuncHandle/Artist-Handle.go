@@ -2,7 +2,6 @@ package Handle
 
 import (
 	"bytes"
-	"fmt"
 	"net/http"
 	"strconv"
 	"text/template"
@@ -25,7 +24,7 @@ func ArtistsHandle(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	val := r.FormValue("id")
-	fmt.Println("ok")
+	// fmt.Println("ok")
 
 	IdArtest, err := strconv.Atoi(val)
 	if err != nil || IdArtest < 1 || IdArtest > 52 {
@@ -37,7 +36,7 @@ func ArtistsHandle(w http.ResponseWriter, r *http.Request) {
 	// 	ErrorHandle(w, http.StatusInternalServerError)
 	// 	return
 	// }
-	fmt.Println(Func.Date[IdArtest-1])
+	// fmt.Println(Func.Date[IdArtest-1])
 	DATA := Func.DataFinal{
 		Artiste:  Func.Artists[IdArtest-1],
 		Location: Func.Location[IdArtest-1],

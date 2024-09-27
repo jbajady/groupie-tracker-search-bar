@@ -26,7 +26,7 @@ type Artest struct {
 
 type Locations struct {
 	ID        int      `json:"id"`
-	Locations []string `json:"locations"`
+	Locations map[string][]string  `json:"locations"`
 }
 type Dates struct {
 	ID    int      `json:"id"`
