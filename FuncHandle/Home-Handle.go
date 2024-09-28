@@ -27,11 +27,11 @@ func HomeHandle(w http.ResponseWriter, r *http.Request) {
 		ErrorHandle(w, http.StatusInternalServerError)
 		return
 	}
-	if Func.GenriateData() {
+	if !Func.GenriateData() {
 		ErrorHandle(w, http.StatusInternalServerError)
 		return
 	}
-	
+
 	var buf bytes.Buffer
 	err = temple.Execute(&buf, Func.Artists)
 	if err != nil {

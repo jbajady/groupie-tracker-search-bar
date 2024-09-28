@@ -2,6 +2,7 @@ package Handle
 
 import (
 	"bytes"
+	"fmt"
 	"net/http"
 	"strconv"
 	"text/template"
@@ -36,12 +37,12 @@ func ArtistsHandle(w http.ResponseWriter, r *http.Request) {
 	// 	ErrorHandle(w, http.StatusInternalServerError)
 	// 	return
 	// }
-	// fmt.Println(Func.Date[IdArtest-1])
+	fmt.Println("3nnjnm++++++++", Func.Lcation[IdArtest-1])
 	DATA := Func.DataFinal{
-		Artiste:  Func.Artists[IdArtest-1],
-		Location: Func.Location[IdArtest-1],
-		Date:     Func.Date[IdArtest-1],
-		Relation: Func.Relation[IdArtest-1],
+		Artiste: Func.Artists[IdArtest-1],
+		// Location: Func.Lcation[IdArtest-1],
+		// Date:     Func.INformtion.IndexDate[IdArtest-1],
+		// Relation: Func.INformtion.IndexRelation[IdArtest-1],
 	}
 
 	var buf bytes.Buffer
