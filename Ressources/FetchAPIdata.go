@@ -2,9 +2,9 @@ package Func
 
 import (
 	"encoding/json"
-	"fmt"
 	"io"
 	"net/http"
+	"strings"
 )
 
 func FetchData(url string, c interface{}) error {
@@ -17,8 +17,10 @@ func FetchData(url string, c interface{}) error {
 	if err != nil {
 		return err
 	}
+	if strings.HasSuffix(url, "locations") {
+		dat = []byte(strings.ReplaceAll(string(dat), "dates", "hd"))
+	}
 	er2 := json.Unmarshal(dat, &c)
-	fmt.Println("fetche data--------------------->", c)
 	if er2 != nil {
 		return er2
 	}

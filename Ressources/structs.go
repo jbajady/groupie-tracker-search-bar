@@ -2,9 +2,9 @@ package Func
 
 var (
 	Artists  []Artest
-	Relation RelationST
-	Lcation      LocationData
-	Date     Dates
+	Relation LocationData
+	Artiste  Artest
+	SearchArtist []Artest
 	API      APi
 )
 
@@ -16,36 +16,21 @@ type APi struct {
 }
 
 type Artest struct {
-	ID           int      `json:"id"`
-	Image        string   `json:"image"`
-	Name         string   `json:"name"`
-	Members      []string `json:"members"`
-	CreationDate int      `json:"creationDate"`
-	FirstAlbum   string   `json:"firstAlbum"`
+	ID            int      `json:"id"`
+	Image         string   `json:"image"`
+	Name          string   `json:"name"`
+	Members       []string `json:"members"`
+	CreationDate  int      `json:"creationDate"`
+	FirstAlbum    string   `json:"firstAlbum"`
+	Date          []string
+	Location      []string
+	DatesLocation map[string][]string
 }
 type LocationData struct {
 	Index []struct {
-		ID        int      `json:"id"`
-		Locations []string `json:"locations"`
-		Dates     string   `json:"dates"`
-	} `json:"index"`
-}
-
-type Dates struct {
-	Index []struct {
-		ID    int      `json:"id"`
-		Dates []string `json:"dates"`
-	} `json:"index"`
-}
-
-type RelationST struct {
-	Index []struct {
+		ID            int                 `json:"id"`
+		Location      []string            `json:"locations"`
+		Date          []string            `json:"dates"`
 		DatesLocation map[string][]string `json:"datesLocations"`
 	} `json:"index"`
-}
-type DataFinal struct {
-	Artiste  Artest
-	Relation RelationST
-	Location LocationData
-	Date     Dates
 }

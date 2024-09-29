@@ -10,26 +10,26 @@
       <h1>Information Of Artist</h1>
     </div>
     <div style="margin: 10px;">
-      <p>{{.Artiste.Name}}</p>
-      <img src="{{.Artiste.Image}}">
+      <p>{{.Name}}</p>
+      <img src="{{.Image}}">
       <h2>Creation Date:</h2>
-      <p>{{.Artiste.CreationDate}}</p>
+      <p>{{.CreationDate}}</p>
       <h2>Band Members:</h2>
-      {{range .Artiste.Members}}
+      {{range .Members}}
         <p>{{.}}</p>
       {{end}} 
       <h2>First Album:</h2>
-      <p>{{.Artiste.FirstAlbum}}</p>
+      <p>{{.FirstAlbum}}</p>
       <h2>location:</h2>
-      {{range .Location.Locations}}
+      {{range .Location}}
       <p>{{.}}</p>
       {{end}}
       <h2>dataes:</h2>
-      {{range .Date.Dates}}
+      {{range .Date}}
             <p>{{.}}</p>
        {{end}}
       <h2>Relation (Dates and Locations):</h2>
-      {{range $location, $dates := .Relation.DatesLocation}}
+      {{range $location, $dates := .DatesLocation}}
         <h4>{{ $location }}</h4>
         <ul>
           {{range $dates}}

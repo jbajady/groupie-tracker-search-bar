@@ -25,28 +25,18 @@ func ArtistsHandle(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	val := r.FormValue("id")
-	// fmt.Println("ok")
-
 	IdArtest, err := strconv.Atoi(val)
 	if err != nil || IdArtest < 1 || IdArtest > 52 {
 		ErrorHandle(w, http.StatusNotFound)
 		return
 	}
-	// valide := Func.GenriateData(IdArtest)
-	// if !valide {
-	// 	ErrorHandle(w, http.StatusInternalServerError)
-	// 	return
-	// }
-	fmt.Println("3nnjnm++++++++", Func.Lcation[IdArtest-1])
-	DATA := Func.DataFinal{
-		Artiste: Func.Artists[IdArtest-1],
-		// Location: Func.Lcation[IdArtest-1],
-		// Date:     Func.INformtion.IndexDate[IdArtest-1],
-		// Relation: Func.INformtion.IndexRelation[IdArtest-1],
-	}
-
+	Func.Artiste = Func.Artists[IdArtest-1]
+	Func.Artiste.Location = Func.Relation.Index[IdArtest-1].Location
+	Func.Artiste.Date = Func.Relation.Index[IdArtest-1].Date
+	Func.Artiste.DatesLocation = Func.Relation.Index[IdArtest-1].DatesLocation
+	fmt.Println(Func.Artiste)
 	var buf bytes.Buffer
-	err = temple.Execute(&buf, DATA)
+	err = temple.Execute(&buf, Func.Artiste)
 	if err != nil {
 		ErrorHandle(w, http.StatusInternalServerError)
 		return
