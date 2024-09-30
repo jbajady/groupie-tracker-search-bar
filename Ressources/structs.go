@@ -1,11 +1,11 @@
 package Func
 
 var (
-	Artists  []Artest
-	Relation LocationData
-	Artiste  Artest
+	Artists      []Artest
+	Relation     LocationData
+	Artiste      Artest
 	SearchArtist []Artest
-	API      APi
+	API          APi
 )
 
 type APi struct {

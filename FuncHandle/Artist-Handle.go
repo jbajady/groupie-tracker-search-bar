@@ -2,7 +2,6 @@ package Handle
 
 import (
 	"bytes"
-	"fmt"
 	"net/http"
 	"strconv"
 	"text/template"
@@ -34,7 +33,6 @@ func ArtistsHandle(w http.ResponseWriter, r *http.Request) {
 	Func.Artiste.Location = Func.Relation.Index[IdArtest-1].Location
 	Func.Artiste.Date = Func.Relation.Index[IdArtest-1].Date
 	Func.Artiste.DatesLocation = Func.Relation.Index[IdArtest-1].DatesLocation
-	fmt.Println(Func.Artiste)
 	var buf bytes.Buffer
 	err = temple.Execute(&buf, Func.Artiste)
 	if err != nil {
