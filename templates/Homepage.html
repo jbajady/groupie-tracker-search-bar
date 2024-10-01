@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>groupie-tracker</title>
+</head>
+<body>
+  <div style="text-align: center;margin: 5px;">
+    <h1>GROUPIE-TRACKER</h1>
+    <form action="/Search" method="get">
+      <input type="text" list="text" name="text">
+      
+      <datalist id="text">
+        {{range .}}
+        <option value="{{.Name}}">Name artistes</option>
+          {{range .Members}}
+          <option value="{{.}}">name band</option>
+            {{end}}
+            <option value="{{.CreationDate}}">Creation Date</option>
+              <option value="{{.FirstAlbum}}">First Album</option>
+                {{range .Date}}
+                <option value="{{.}}">date</option>
+                  {{end}}
+                  {{range .Location}}
+                  <option value="{{.}}">name Location</option>
+                  {{end}}
+                  {{end}}
+      </datalist>
+        <button type="submit">submit</button>
+    </form>
+  </div>
+  <div style="width: 97%;height: 100%;  text-align: center; margin: 10px;">
+    {{range .}}
+    <div style=" display: inline-flex; width: 250px; height: 300px;">
+     
+      <form action="/Artist" method="get">
+        <div name="name1"  style="display: block; text-align: center; margin: 5px;">
+          <img src="{{.Image}}" alt="oo"><br>
+      <button type="submit" name="id" value="{{.ID}}">{{.Name}}</button>
+        </div>
+      </form>
+    </div>
+    {{end}}
+  </div>
+</body>
+</html>
+

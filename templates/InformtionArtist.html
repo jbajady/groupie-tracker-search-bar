@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div >
+      <h1>Information Of Artist</h1>
+    </div>
+    <div style="margin: 10px;">
+      <p>{{.Name}}</p>
+      <img src="{{.Image}}">
+      <h2>Creation Date:</h2>
+      <p>{{.CreationDate}}</p>
+      <h2>Band Members:</h2>
+      {{range .Members}}
+        <p>{{.}}</p>
+      {{end}} 
+      <h2>First Album:</h2>
+      <p>{{.FirstAlbum}}</p>
+      <h2>location:</h2>
+      {{range .Location}}
+      <p>{{.}}</p>
+      {{end}}
+      <h2>dataes:</h2>
+      {{range .Date}}
+            <p>{{.}}</p>
+       {{end}}
+      <h2>Relation (Dates and Locations):</h2>
+      {{range $location, $dates := .DatesLocation}}
+        <h4>{{ $location }}</h4>
+        <ul>
+          {{range $dates}}
+            <li>{{.}}</li>
+          {{end}}
+        </ul>
+      {{end}}
+    </div>
+</body>
+</html>
