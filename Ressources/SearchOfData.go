@@ -5,6 +5,7 @@ import (
 	"strings"
 )
 
+// Func  For Get  The  Artists Needs Using  Search
 func SearchOfData(text string) {
 	checked := false
 	if len(text) == 0 {
@@ -16,21 +17,21 @@ func SearchOfData(text string) {
 	}
 	for i, Artist := range Artists {
 		creationdata := strconv.Itoa(Artist.CreationDate)
-		if strings.Contains(Artist.Name, text) || strings.Contains(Artist.FirstAlbum, text) || strings.Contains(creationdata, text) {
+		if strings.Contains(strings.ToLower(Artist.Name), text) || strings.Contains(strings.ToLower(Artist.FirstAlbum), text) || strings.Contains(creationdata, text) {
 			checked = true
 		}
 		for _, ch := range Artist.Members {
-			if strings.Contains(ch, text) {
+			if strings.Contains(strings.ToLower(ch), text) {
 				checked = true
 			}
 		}
-		for _, locactin := range Relation.Index[i].Location {
-			if strings.Contains(locactin, text) {
+		for _, locactin := range Relations.Index[i].Location {
+			if strings.Contains(strings.ToLower(locactin), text) {
 				checked = true
 			}
 		}
-		for _, data := range Relation.Index[i].Date {
-			if strings.Contains(data, text) {
+		for _, data := range Relations.Index[i].Date {
+			if strings.Contains(strings.ToLower(data), text) {
 				checked = true
 			}
 		}

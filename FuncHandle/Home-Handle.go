@@ -8,6 +8,7 @@ import (
 	Func "GroupieTracker/Ressources"
 )
 
+// the function only handles GET requests on the root path (/)
 func HomeHandle(w http.ResponseWriter, r *http.Request) {
 	if r.URL.Path != "/" {
 		ErrorHandle(w, http.StatusNotFound)
@@ -32,6 +33,10 @@ func HomeHandle(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	if len(Func.Artists) == 0 {
+		ErrorHandle(w, http.StatusInternalServerError)
+		return
+	}
 	var buf bytes.Buffer
 	err = temple.Execute(&buf, Func.Artists)
 	if err != nil {
