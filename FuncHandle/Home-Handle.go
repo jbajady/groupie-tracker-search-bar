@@ -32,6 +32,7 @@ func HomeHandle(w http.ResponseWriter, r *http.Request) {
 		ErrorHandle(w, http.StatusInternalServerError)
 		return
 	}
+
 	if len(Func.Artists) == 0 {
 		ErrorHandle(w, http.StatusInternalServerError)
 		return
