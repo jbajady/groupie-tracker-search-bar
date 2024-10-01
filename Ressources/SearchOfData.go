@@ -4,7 +4,7 @@ import (
 	"strconv"
 	"strings"
 )
-
+// Func  For Get  The  Artists Needs Using  Search 
 func SearchOfData(text string) {
 	checked := false
 	if len(text) == 0 {
@@ -24,12 +24,12 @@ func SearchOfData(text string) {
 				checked = true
 			}
 		}
-		for _, locactin := range Relation.Index[i].Location {
+		for _, locactin := range Relations.Index[i].Location {
 			if strings.Contains(locactin, text) {
 				checked = true
 			}
 		}
-		for _, data := range Relation.Index[i].Date {
+		for _, data := range Relations.Index[i].Date {
 			if strings.Contains(data, text) {
 				checked = true
 			}

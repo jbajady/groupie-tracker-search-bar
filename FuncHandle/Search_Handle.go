@@ -7,7 +7,7 @@ import (
 
 	Func "GroupieTracker/Ressources"
 )
-
+// handles GET requests on the /Search path.
 func SearchHandle(w http.ResponseWriter, r *http.Request) {
 	if r.URL.Path != "/Search" {
 		ErrorHandle(w, http.StatusNotFound)

@@ -6,7 +6,7 @@ import (
 	"text/template"
 )
 
-// // the error page of the site is being worked on.
+// // handling HTTP errors in the web application
 func ErrorHandle(w http.ResponseWriter, StatusCodes int) {
 	tmplet, er := template.ParseFiles("templates/Error.html")
 	if er != nil {

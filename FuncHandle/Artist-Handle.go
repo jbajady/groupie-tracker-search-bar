@@ -18,6 +18,7 @@ func ArtistsHandle(w http.ResponseWriter, r *http.Request) {
 		ErrorHandle(w, http.StatusMethodNotAllowed)
 		return
 	}
+
 	temple, err := template.ParseFiles("./templates/InformtionArtist.html")
 	if err != nil {
 		ErrorHandle(w, http.StatusInternalServerError)
@@ -29,12 +30,16 @@ func ArtistsHandle(w http.ResponseWriter, r *http.Request) {
 		ErrorHandle(w, http.StatusNotFound)
 		return
 	}
-	Func.Artiste = Func.Artists[IdArtest-1]
-	Func.Artiste.Location = Func.Relation.Index[IdArtest-1].Location
-	Func.Artiste.Date = Func.Relation.Index[IdArtest-1].Date
-	Func.Artiste.DatesLocation = Func.Relation.Index[IdArtest-1].DatesLocation
+	if len(Func.Artists) == 0 {
+		ErrorHandle(w, http.StatusInternalServerError)
+		return
+	}
+	Func.Artist = Func.Artists[IdArtest-1]
+	Func.Artist.Location = Func.Relations.Index[IdArtest-1].Location
+	Func.Artist.Date = Func.Relations.Index[IdArtest-1].Date
+	Func.Artist.Relation = Func.Relations.Index[IdArtest-1].Relation
 	var buf bytes.Buffer
-	err = temple.Execute(&buf, Func.Artiste)
+	err = temple.Execute(&buf, Func.Artist)
 	if err != nil {
 		ErrorHandle(w, http.StatusInternalServerError)
 		return
