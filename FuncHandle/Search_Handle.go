@@ -25,7 +25,7 @@ func SearchHandle(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	inputtext := r.FormValue("text")
-	Func.SearchOfData(strings.ToLower(inputtext))
+	Func.SearchOfData(strings.ToLower(strings.TrimSpace(inputtext)))
 	var buf bytes.Buffer
 	err = temple.Execute(&buf, Func.SearchArtist)
 	if err != nil {
